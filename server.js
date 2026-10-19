@@ -12,6 +12,8 @@ import pg from "pg";
 dotenv.config();
 const { Pool } = pg;
 const app = express();
+app.use(express.static('public'));
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const pool = new Pool({ connectionString: process.env.DATABASE_URL, ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized:false } : false });
 
